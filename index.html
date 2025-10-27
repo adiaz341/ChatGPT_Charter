@@ -3,999 +3,125 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Landing An Entry‑Level IT Job — Project Charter (Pro)</title>
+  <title>Shared Portfolio View – Executive Dashboard (Preview)</title>
   <style>
-    :root{
-      --bg:#f7fbff;            /* very light blue background */
-      --card:#ffffff;          /* cards */
-      --ink:#0b2545;           /* deep ink */
-      --muted:#556/* ~ */;     /* muted text */
-      --accent:#2bb673;        /* green */
-      --accent-2:#4dabf7;      /* light blue */
-      --accent-2-weak:#e8f3ff; /* pale blue */
-      --ring: rgba(77,171,247,.45);
-      --shadow: 0 8px 24px rgba(12,38,69,.08);
-      --radius: 16px;
-      --radius-lg: 22px;
-      --space: clamp(16px, 3vw, 28px);
-      --space-sm: clamp(10px,2vw,18px);
-      --maxw: 1120px;
-    }
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu; color:var(--ink)}
-    a{color:var(--accent-2);text-decoration: none}
-    a:hover{text-decoration: underline}
-
-    /* Top bar */
-    .hero{
-      position:sticky;top:0;z-index:20;
-      backdrop-filter:saturate(140%) blur(8px);
-      background:linear-gradient(90deg,var(--accent-2-weak), #f9fffb 60%);
-      border-bottom:1px solid #e6eef7;
-    }
-    .hero-inner{max-width:var(--maxw);margin:auto;display:flex;gap:16px;align-items:center;justify-content:space-between;padding:12px var(--space)}
-    .brand{display:flex;gap:12px;align-items:center;font-weight:700}
-    .brand .dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--accent-2),var(--accent));box-shadow:0 0 0 4px rgba(43,182,115,.15)}
-    .brand h1{font-size:18px;letter-spacing:.2px;margin:0}
-
-    /* Layout */
-    .wrap{max-width:var(--maxw);margin:auto;display:grid;grid-template-columns: 280px 1fr;gap:var(--space);padding:var(--space)}
-    @media (max-width: 980px){.wrap{grid-template-columns:1fr}}
-
-    /* Sidebar / TOC */
-    nav.toc{position:sticky;top:64px;align-self:start;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
-    nav.toc h3{margin:.2rem 0 0.6rem 0;font-size:14px;text-transform:uppercase;letter-spacing:.14em;color:#466;opacity:.85}
-    nav.toc ul{list-style:none;padding:0;margin:0;display:grid;gap:6px}
-    nav.toc a{display:block;padding:8px 10px;border-radius:12px}
-    nav.toc a:hover{background:var(--accent-2-weak)}
-
-    /* Cards / sections */
-    .card{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden}
-    .header{padding:28px; background:linear-gradient(180deg, #eef7ff, #ffffff 60%)}
-    .title{margin:0 0 6px 0;font-size: clamp(22px,3.2vw,34px)}
-    .subtitle{margin:0;color:#466}
-
-    /* Collapsible sections (details/summary) */
-    details.section{border-top:1px solid #eef2f6}
-    details.section[open]{background:linear-gradient(180deg, rgba(235,250,242,.6), rgba(255,255,255,1) 140%)}
-    summary.section-head{list-style:none;cursor:pointer;padding:20px 28px;display:flex;align-items:center;gap:10px;font-weight:700}
-    summary.section-head::marker{display:none}
-    summary.section-head .badge{font-size:12px;color:white;background:linear-gradient(135deg,var(--accent),#22a06e); padding:4px 10px;border-radius:999px}
-    summary.section-head .num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:10px;background:var(--accent-2-weak);color:#0b3f72;font-weight:800}
-    .section-body{padding:0 28px 22px 28px}
-
-    /* Blue/green accent strap for sections */
-    details.section .strap{height:6px;background:linear-gradient(90deg,var(--accent-2),var(--accent));}
-
-    /* Content typography */
-    h2{margin:0 0 8px 0}
-    h3{margin:14px 0 6px 0}
-    h4{margin:12px 0 6px 0}
-    p{margin:.6rem 0}
-    ul{margin:.4rem 0 .8rem 1.2rem}
-    li{margin:.25rem 0}
-
-    /* Tables */
-    .table{width:100%;border-collapse:collapse;margin:.6rem 0;border:1px solid #e7edf5;border-radius:12px;overflow:hidden}
-    .table th, .table td{border-bottom:1px solid #e7edf5;padding:10px 12px;vertical-align:top}
-    .table thead th{background:linear-gradient(180deg,#f2f9ff,#ffffff);text-align:left}
-    .table tfoot td{font-weight:700;background:#fafcff}
-    .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:.8rem 0}
-    .pill{background:var(--accent-2-weak);padding:6px 10px;border-radius:999px;display:inline-block}
-
-    /* Footer */
-    footer{max-width:var(--maxw);margin:24px auto;padding:0 var(--space) 60px;color:#567}
-  <!-- Typography contrast: modern headings + clean body -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
-
-<style>
-  /* ---------- TYPOGRAPHY + COLOR ---------- */
+  /* === PMO Executive Portfolio View === */
   :root{
-    --ink:#0b2545;
-    --muted:#5a6b7a;
-    --accent:#2bb673;     /* green */
-    --accent-2:#4dabf7;   /* light blue */
-    --accent-2-weak:#eaf4ff;
+    --ink:#e8ecf1;
+    --muted:#a9b2bd;
+    --panel:#0f1420;
+    --card:#121a29;
+    --accent:#6aa3ff;
+    --shadow:0 6px 24px rgba(0,0,0,.25);
   }
+  html, body{height:100%}
   body{
-    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
-    color: var(--ink);
+    margin:0;
+    background:radial-gradient(1200px 800px at 10% -10%, #0b0d12 0%, #0f1320 100%);
+    color:var(--ink);
+    font:16px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   }
-  /* Headings pop with Poppins */
-  h1,h2,h3, summary.section-head{
-    font-family: Poppins, Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
-    letter-spacing:.2px;
-  }
+  .shell{max-width:1100px; margin:40px auto; padding:24px}
+  header{position:sticky; top:0; z-index:3; background:rgba(15,19,32,.86); backdrop-filter:saturate(140%) blur(8px); border-bottom:1px solid rgba(255,255,255,.06);}
+  header .inner{max-width:1100px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:16px}
+  header h1{margin:0; font-size:28px; letter-spacing:.2px}
+  .pill{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border:1px solid rgba(255,255,255,.12); background:#0d1421; border-radius:999px; color:var(--muted); font-size:13px}
+  .pmo{margin:24px 0; padding:20px; border-radius:16px; background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01)); border:1px solid rgba(255,255,255,.06); box-shadow:var(--shadow);}
+  .pmo h2{margin:0 0 6px 0}
+  .exec{display:grid; gap:10px; margin-bottom:16px}
+  .toolbar{display:flex; align-items:center; gap:10px; margin:10px 0}
+  .toolbar .spacer{flex:1}
 
-  /* ---------- SUBTLE GRADIENTS & HOVER ---------- */
-  a{ color: var(--accent-2); text-decoration: none; }
-  a:hover{ text-decoration: underline; }
+  /* Tiles */
+  .tiles{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; margin:6px 0 18px}
+  .tile{
+    display:flex; align-items:center; justify-content:center; padding:10px 12px;
+    border:1px solid rgba(255,255,255,.12);
+    background:var(--card); border-radius:12px; text-decoration:none; color:var(--ink);
+    font-weight:600; min-height:44px; box-shadow:var(--shadow);
+    transition:transform .16s ease, border-color .16s ease, background .16s ease;
+  }
+  .tile:hover{transform:translateY(-2px); border-color:rgba(106,163,255,.55); background:linear-gradient(180deg,rgba(106,163,255,.10),rgba(255,255,255,.00))}
 
-  /* Card/section hover lift (keeps it subtle) */
-  .card, details.section{
-    transition: box-shadow .25s ease, transform .25s ease, background .25s ease;
-  }
-  details.section:hover{
-    box-shadow: 0 10px 28px rgba(12,38,69,.10);
-  }
-
-  /* Gradient highlight on summary hover */
-  summary.section-head{
-    border-radius: 14px;
-    transition: background .25s ease;
-  }
-  details.section[open] > summary.section-head{
-    background: linear-gradient(180deg, rgba(77,171,247,.08), rgba(43,182,115,.06));
-  }
-  summary.section-head:hover{
-    background: linear-gradient(90deg, rgba(77,171,247,.12), rgba(43,182,115,.12));
-  }
-
-  /* ---------- ICONS & VISUAL CUES (emoji-based, CSS only) ---------- */
-  /* Add data-icon=\"...\" to your summary.section-head; CSS injects the icon */
-  summary.section-head .icon{
-    width: 1.35em; height: 1.35em; display:inline-grid; place-items:center;
-    border-radius: 10px; margin-right:.55rem; font-size: .95em; font-weight: 800;
-    background: linear-gradient(135deg, var(--accent-2), var(--accent));
-    color: #fff;
-    box-shadow: 0 2px 8px rgba(77,171,247,.25);
-    flex: 0 0 auto;
-  }
-  /* Optional numeric/step badge already present can stay; this coexists */
-
-  /* ---------- ANIMATED COLLAPSIBLES ---------- */
-  /* We’ll animate the content wrapper (.collapsible) instead of <details> directly */
-  .collapsible{
-    overflow: hidden;
-    height: auto;
-    transition: height .28s ease;
-  }
-
-  /* ---------- STICKY BACK-TO-TOP BUTTON ---------- */
-  #backToTop{
-    position: fixed; right: 18px; bottom: 18px; z-index: 60;
-    padding: 10px 12px; border-radius: 999px; border: 0;
-    box-shadow: 0 8px 24px rgba(12,38,69,.15);
-    background: linear-gradient(135deg, var(--accent-2), var(--accent));
-    color: #fff; font-weight: 700; cursor: pointer;
-    display: none; /* shown via JS on scroll */
-  }
-  #backToTop:hover{
-    filter: brightness(1.05);
-    transform: translateY(-1px);
-  }
-</style>
-
-<style>
-  /* ===== UX & Visual Polish ===== */
-  /* Highlight the current section in the sidebar TOC */
-  nav.toc a.active{
-    background: var(--accent-2-weak);
-    font-weight: 700;
-    border-radius: 10px;
-  }
-
-  /* Subtle icon motion on hover/focus for affordance */
-  summary.section-head .icon{
-    transition: transform .15s ease;
-  }
-  summary.section-head:hover .icon,
-  summary.section-head:focus-visible .icon{
-    transform: scale(1.05);
-  }
-
-  /* Open/Close controls styling (kept minimal; inherits your theme) */
-  .controls{
-    display:flex; gap:8px; padding:8px 28px 0 28px; flex-wrap: wrap;
-  }
-  .controls button{
-    border: 0;
-    padding: 8px 12px;
-    border-radius: 999px;
-    font-weight: 700;
-    cursor: pointer;
-    background: linear-gradient(135deg, var(--accent-2), var(--accent));
-    color: #fff;
-    box-shadow: 0 8px 20px rgba(12,38,69,.15);
-  }
-  .controls button:hover{ filter: brightness(1.05); transform: translateY(-1px); }
-  .controls button:focus-visible{ outline: 3px solid var(--ring); outline-offset: 2px; }
-
-  /* ===== Accessibility ===== */
-  /* Clear, consistent focus rings site-wide */
-  :where(button, a, summary){ outline: none; }
-  :where(button, a, summary):focus-visible{
-    outline: 3px solid var(--ring);
-    outline-offset: 2px;
-    border-radius: 12px;
-  }
-
-  /* Pill/badge contrast (tweak if your colors differ) */
-  .pill{
-    color: #0b3f2a;              /* dark text */
-    background: #e8f5ef;         /* pale green */
-    border: 1px solid #d2ebdf;   /* subtle edge for contrast */
-  }
-
-  /* Respect users who prefer reduced motion */
-  @media (prefers-reduced-motion: reduce){
-    *{
-      animation: none !important;
-      transition: none !important;
-      scroll-behavior: auto !important;
-    }
-  }
-</style>
-<style>
-  /* Sticky Back-to-Top */
-  #backToTop[hidden]{ display:none !important; }
-  #backToTop{
-    position: fixed;
-    right: 16px;
-    bottom: calc(16px + env(safe-area-inset-bottom, 0));
-    z-index: 1000;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 12px;
-    border: 0;
-    border-radius: 999px;
-    font-weight: 800;
-    cursor: pointer;
-    background: linear-gradient(135deg, var(--accent-2), var(--accent));
-    color: #fff;
-    box-shadow: 0 10px 24px rgba(12,38,69,.18);
-    transition: transform .15s ease, filter .15s ease;
-  }
-  #backToTop:hover{ filter: brightness(1.06); transform: translateY(-1px); }
-  #backToTop:focus-visible{ outline: 3px solid var(--ring); outline-offset: 2px; }
-  /* optional: small chevron */
-  #backToTop .chev{ font-size: 1.1em; line-height: 1; }
-
-  /* Respect prefers-reduced-motion */
-  @media (prefers-reduced-motion: reduce){
-    #backToTop{ transition: none; }
-  }
-</style>
-
+  /* Collapsible updates */
+  details.update{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:16px; box-shadow:var(--shadow); overflow:hidden}
+  details.update + details.update{margin-top:12px}
+  details.update summary{list-style:none; cursor:pointer; padding:14px 16px; display:flex; align-items:center; gap:10px; user-select:none}
+  details.update summary::-webkit-details-marker{display:none}
+  .summary-row{display:flex; align-items:center; gap:10px; width:100%}
+  .summary-row .spacer{flex:1}
+  .summary-meta{display:flex; gap:12px; color:var(--muted); font-size:12px}
+  .update-body{padding:0 16px 16px}
+  .update-body .row{display:grid; grid-template-columns:1fr; gap:8px}
+  .update-body p{margin:0}
+  </style>
 </head>
 <body>
-
-  <div class="hero">
-    <div class="hero-inner">
-      <div class="brand"><span class="dot"></span><h1>Project Charter — Managing IT Projects</h1></div>
-      <div><a href="#top">Top</a></div>
+  <header>
+    <div class="inner">
+      <h1>Industry Professional Development</h1>
+      <span class="pill">Unified, executive-ready summary of the class project portfolio.</span>
     </div>
-  </div>
+  </header>
 
-  <div class="wrap" id="top">
-    <nav class="toc" aria-label="On this page">
-      <h3>On this page</h3>
-      <ul>
-        <li><a href="#student-info">Student Information</a></li>
-        <li><a href="#sec1">1. Title & Description</a></li>
-        <li><a href="#sec2">2. Vision, Mission & Strategy</a></li>
-        <li><a href="#sec3">3. Business Case</a></li>
-        <li><a href="#sec4">4. High-Level Scope</a></li>
-        <li><a href="#sec5">5. Stakeholder Register</a></li>
-        <li><a href="#sec6">6. Deliverables & DoD</a></li>
-        <li><a href="#sec7">7. Budget (est.)</a></li>
-        <li><a href="#sec8">8. Project Methodology — Explanation</a></li>
-        <li><a href="#sec9">9. Project Methodology Diagram</a></li>
-        <li><a href="#sec10">10. Project Tool Selection</a></li>
-        <li><a href="#sec11">11. Screenshots — Project Tool in Use</a></li>
-        <li><a href="#additional">Additional Components</a></li>
-      </ul>
-    </nav>
-
-    <main class="card">
-      <div class="header">
-        <h2 class="title">Landing An Entry‑Level IT Job</h2>
-        <p class="subtitle">Project Charter — Managing IT Projects</p>
+  <div class="shell">
+    <section class="pmo" id="portfolio-view" aria-label="Executive Portfolio View">
+      <div class="exec">
+        <div class="toolbar">
+          <h2>Portfolio View</h2>
+          <div class="spacer"></div>
+        </div>
+        <!-- Executive summary paragraph (editable) -->
+        <p id="execSummary" contenteditable="true">
+          The program currently spans 5 projects, with 4 on track, 1 at risk, and 0 off track. Common themes include charter finalization, scope alignment, and early milestone planning. Overall health is stable with focused attention on upcoming deliverables.
+        </p>
       </div>
 
-      <div class="strap"></div>
-<!-- Open / Close all sections controls -->
-<div class="controls" role="group" aria-label="Section controls">
-  <button id="openAll" type="button" aria-controls="top">Open all</button>
-  <button id="closeAll" type="button" aria-controls="top">Close all</button>
-</div>
-
-      <!-- Student Information -->
-<details id="student-info" class="section" open>
-  <summary class="section-head">
-    <span class="icon" aria-hidden="true">🎓</span>
-    <span>Student Information</span>
-  </summary>
-  <div class="collapsible">
-    <div class="section-body">
-      <div class="kpi">
-        <div><strong>Student Name</strong><div>Alejandro Diaz</div></div>
-        <div><strong>Course</strong><div>Managing IT Projects</div></div>
-        <div><strong>Semester</strong><div>Fall 2025</div></div>
-      </div>
-      <p class="pill">Tip: Click any shaded field to edit inline. Your edits will print.</p>
-    </div>
-    <div class="strap"></div>
-  </div>
-</details>
-
-<!-- 1. Title & Description -->
-<details id="sec1" class="section" open>
-  <summary class="section-head">
-    <span class="icon" aria-hidden="true">🎯</span>
-    <span>Project Title & Description</span>
-  </summary>
-  <div class="collapsible">
-    <div class="section-body">
-      <h4>Project Title: Landing An Entry-Level IT Job</h4>
-      <p>I am going to build an IT portfolio to showcase what I have learned since transitioning from the chemical blending industry. I will begin by reinforcing my knowledge in Networking, Cybersecurity, and IT Fundamentals. Doing this will aid my chances of securing employment once I graduate from college with my B.S. in Computer Information Systems.</p>
-    </div>
-    <div class="strap"></div>
-  </div>
-</details>
-
-<!-- 2. Vision, Mission & Strategy Alignment -->
-<details id="sec2" class="section" open>
-  <summary class="section-head">
-    <span class="icon" aria-hidden="true">🌟</span>
-    <span>Vision, Mission & Strategy Alignment</span>
-  </summary>
-  <div class="collapsible">
-    <div class="section-body">
-      <h4><span aria-hidden="true">🎯 </span>Personal Mission Connection</h4>
-      <p>I am a reliable, hardworking, and trustworthy individual who strives to better himself every day. I face challenges—even when I don’t fully understand them—head-on and work well in teams as either a helper or a leader. I pride myself on hard work and communication with the goal of advancing the project and the team.</p>
-
-      <h4><span aria-hidden="true">✨ </span>Vision Alignment</h4>
-      <p>In the next five years, I see myself working in the IT industry in either the cybersecurity or networking sector. I plan to earn certifications such as CompTIA A+, Network+, Security+, and CCNA. I am working toward a future in IT management and plan to pursue a master's degree to deepen my knowledge.</p>
-
-      <h4><span aria-hidden="true">📈 </span>Strategic Goal Support</h4>
-      <ul>
-        <li>Obtain industry-recognized certifications.</li>
-        <li>Work or volunteer in an IT position.</li>
-        <li>Get hands-on experience in cybersecurity and networking fundamentals.</li>
-      </ul>
-    </div>
-    <div class="strap"></div>
-  </div>
-</details>
-
-<!-- 3. Business Case & Justification -->
-<details id="sec3" class="section">
-  <summary class="section-head">
-    <span class="icon" aria-hidden="true">💼</span>
-    <span>Business Case & Justification</span>
-  </summary>
-  <div class="collapsible">
-    <div class="section-body">
-      <h4><span aria-hidden="true">🏷️ </span>Professional Value</h4>
-      <p>This project will benefit my career by highlighting what I have learned during my studies. It will also enhance my portfolio with examples of projects and hands-on experience. Additionally, it will encourage me to apply for internships and volunteer more at work, church, and wherever I am able to gain experience.</p>
-
-      <h4><span aria-hidden="true">💡 </span>Personal Value</h4>
-      <p>This project will grant me personal satisfaction, skill development, and a structured way to deepen my learning while building a portfolio that helps ensure my job applications are taken seriously. I will strengthen fundamentals in networking, cybersecurity, and troubleshooting as a foundation for continued growth—serving as a stepping stone into the IT workforce.</p>
-
-      <h4><span aria-hidden="true">🎓 </span>Learning Outcomes</h4>
-      <p>This project will teach me project management, industry knowledge, technical skills, and networking skills. Hands-on assignments—such as labs and online courses—will reinforce learning and retention. I will also build a professional portfolio and a lightweight website to showcase my skills, and expand my network through meetups (e.g., Eventbrite), campus guest speakers, and job fairs at Cal State LA.</p>
-    </div>
-    <div class="strap"></div>
-  </div>
-</details>
-
-<!-- 4. High-Level Scope -->
-<details id="sec4" class="section">
-  <summary class="section-head">
-    <span class="icon" aria-hidden="true">🧭</span>
-    <span>High-Level Scope</span>
-  </summary>
-  <div class="collapsible">
-    <div class="section-body">
-      <h4><span aria-hidden="true">✅ </span>In Scope</h4>
-      <ul>
-        <li>Build digital portfolio</li>
-        <li>Research objectives and strategize certification for CompTIA A+</li>
-        <li>Complete Cisco's IT Support Specialist Path</li>
-        <li>Complete Cisco's Network Technician Path</li>
-        <li>Complete Cisco's Junior Cybersecurity Analyst Path</li>
-        <li>Include knowledge of SQL, Python, and Oracle databases</li>
-        <li>Build personal website to house digital portfolio</li>
-      </ul>
-
-      <h4><span aria-hidden="true">🗺️ </span>Roadmap Items</h4>
-      <ul>
-        <li>Resume update linking digital portfolio</li>
-        <li>Post completion badges to website</li>
-        <li>Attempt certification in CompTIA A+</li>
-        <li>Study for either CCNA, Network+, or Security+</li>
-        <li>Apply for jobs</li>
-      </ul>
-
-      <h4><span aria-hidden="true">🚫 </span>Out of Scope</h4>
-      <ul>
-        <li>Build home lab</li>
-        <li>Build portfolio website from scratch</li>
-        <li>Learn HTML, CSS, and JavaScript</li>
-        <li>Apply to jobs prematurely</li>
-        <li>Spend money on certification exams too soon</li>
-      </ul>
-    </div>
-    <div class="strap"></div>
-  </div>
-</details>
-
-<!-- 5. Stakeholder Register -->
-<details id="sec5" class="section">
-  <summary class="section-head">
-    <span class="icon" aria-hidden="true">👥</span>
-    <span>Stakeholder Register</span>
-  </summary>
-  <div class="collapsible">
-    <div class="section-body">
-      <div style="overflow:auto">
-        <table class="table" aria-label="Stakeholder Register">
-          <thead>
-            <tr>
-              <th>Stakeholder</th><th>Category</th><th>Role/Interest</th><th>Power</th><th>Interest</th><th>Engagement Strategy</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Myself &amp; Wife</td><td>Internal</td><td>Provide resources, time, motivation, and accountability</td><td>High</td><td>High</td><td>Manage closely — weekly check-ins, milestone celebrations</td></tr>
-            <tr><td>Current Job</td><td>Internal</td><td>Potential to apply new skills and allocate study time</td><td>Medium</td><td>Medium</td><td>Keep satisfied — share graduation and certification plans</td></tr>
-            <tr><td>Professors / Mentors</td><td>External</td><td>Offer guidance, feedback, and career advice</td><td>Medium</td><td>Medium</td><td>Keep satisfied — periodic emails or meetings</td></tr>
-            <tr><td>Peer Learners / Study Groups</td><td>External</td><td>Collaborative learning and motivation</td><td>Low</td><td>Low</td><td>Monitor — participate in forums and group sessions</td></tr>
-            <tr><td>Certification Providers (CompTIA, Cisco, ISC²)</td><td>External</td><td>Validate knowledge with recognized credentials</td><td>High</td><td>High</td><td>Manage closely — follow exam requirements</td></tr>
-            <tr><td>Future Employers / Recruiters</td><td>External</td><td>Interested in portfolio, skills, and certifications</td><td>High</td><td>High</td><td>Manage closely — share updates via LinkedIn and networking</td></tr>
-            <tr><td>IT Communities / Local Meetups</td><td>External</td><td>Networking, knowledge exchange, mentorship</td><td>Medium</td><td>Medium</td><td>Keep informed — attend events and contribute</td></tr>
-            <tr><td>Regulatory Framework Bodies (e.g., NIST)</td><td>External</td><td>Provide cybersecurity standards and frameworks</td><td>Low</td><td>Low</td><td>Monitor — align learning with guidelines</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p><em>Power–Interest mapping:</em> Keep Satisfied (High Power, Low Interest); Manage Closely (High Power, High Interest); Monitor (Low Power, Low Interest); Keep Informed (Low Power, High Interest).</p>
-    </div>
-    <div class="strap"></div>
-  </div>
-</details>
-
-<!-- 6. Deliverables & Definition of Done -->
-<details id="sec6" class="section">
-  <summary class="section-head">
-    <span class="icon" aria-hidden="true">📦</span>
-    <span>Deliverables &amp; Definition of Done</span>
-  </summary>
-  <div class="collapsible">
-    <div class="section-body">
-      <table class="table" aria-label="Deliverables">
-        <thead>
-          <tr><th>Deliverable Name</th><th>Type</th><th>SMART Description</th><th>Definition of Done</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>GitHub Portfolio</td>
-            <td>Project Deliverable</td>
-            <td>Create and publish a personal GitHub portfolio site that is accessible, professional, and showcases coursework as well as certifications.</td>
-            <td>Portfolio website published on GitHub with working navigation, links, and professional presentation.</td>
-          </tr>
-          <tr>
-            <td>Networking Fundamentals Badge</td>
-            <td>Certification Deliverable</td>
-            <td>Complete Cisco Networking Academy's Networking Technician Path and earn a certificate to demonstrate networking skills.</td>
-            <td>Completion certificate earned from Cisco Networking Academy.</td>
-          </tr>
-          <tr>
-            <td>Cybersecurity Fundamentals Badge</td>
-            <td>Certification Deliverable</td>
-            <td>Complete Cisco's Cybersecurity Analyst Path and hands-on labs, documenting experience and earning a certificate.</td>
-            <td>Completion of Cisco Cybersecurity Analyst Path with certificate and labs documented.</td>
-          </tr>
-          <tr>
-            <td>ISC2 &amp; Security+ Certifications</td>
-            <td>Certification Deliverable</td>
-            <td>Complete ISC2 CC and CompTIA Security+ certifications to validate cybersecurity knowledge and skills.</td>
-            <td>Both exams passed and certificates uploaded to GitHub portfolio.</td>
-          </tr>
-          <tr>
-            <td>Apply for a Job in IT</td>
-            <td>Career Deliverable</td>
-            <td>Update resume and portfolio, submit at least 10 applications, and secure interviews for IT positions.</td>
-            <td>Resume updated, applications submitted, interviews secured, and an offer obtained.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h4><span aria-hidden="true">🧩 </span>Deliverable 1 — GitHub Portfolio (WBS)</h4>
-      <div style="overflow:auto">
-        <table class="table">
-          <thead>
-            <tr><th>WBS ID</th><th>Level</th><th>Task / Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>1</td><td>Deliverable</td><td>GitHub Portfolio</td><td>24</td><td>—</td><td>—</td></tr>
-            <tr><td>1.1</td><td>Work Package</td><td>Structure GitHub webpage</td><td>6</td><td>—</td><td>—</td></tr>
-            <tr><td>1.1.1</td><td>Task</td><td>Create GitHub page</td><td>1</td><td>—</td><td>Task 1.1.2 (1 day) || Task 1.1.3 (3 days)</td></tr>
-            <tr><td>1.1.2</td><td>Task</td><td>YouTube: how to make a portfolio</td><td>1</td><td>1.1.1</td><td>Create GitHub page</td></tr>
-            <tr><td>1.1.3</td><td>Task</td><td>Use template or create own landing page</td><td>3</td><td>1.1.1</td><td>Create GitHub page</td></tr>
-            <tr><td>1.1.4</td><td>Task</td><td>Make webpage public</td><td>2</td><td>1.1.1</td><td>Create GitHub page</td></tr>
-            <tr><td>1.2</td><td>Work Package</td><td>Place professional profile picture</td><td>1</td><td>1.1</td><td>Structure GitHub webpage</td></tr>
-            <tr><td>1.2.1</td><td>Task</td><td>YouTube: how to place profile picture</td><td>1</td><td>—</td><td>Task 1.2.1 (1 day) || Task 1.2.2 (1 day)</td></tr>
-            <tr><td>1.2.2</td><td>Task</td><td>Upload professional profile picture</td><td>1</td><td>1.1.1</td><td>Create GitHub page</td></tr>
-            <tr><td>1.3</td><td>Work Package</td><td>Ability to navigate through GitHub</td><td>6</td><td>1.1</td><td>Structure GitHub webpage</td></tr>
-            <tr><td>1.3.1</td><td>Task</td><td>YouTube: how to design GitHub functionality</td><td>2</td><td>—</td><td>—</td></tr>
-            <tr><td>1.3.2</td><td>Task</td><td>Use ChatGPT as needed to code webpage</td><td>2</td><td>1.3.1</td><td>YouTube: how to design GitHub functionality</td></tr>
-            <tr><td>1.3.3</td><td>Task</td><td>Use working links to external sites</td><td>2</td><td>1.3.1</td><td>YouTube: how to design GitHub functionality</td></tr>
-            <tr><td>1.4</td><td>Work Package</td><td>Verifying profile works properly</td><td>11</td><td>—</td><td>—</td></tr>
-            <tr><td>1.4.1</td><td>Task</td><td>Verify GitHub is accessible</td><td>1</td><td>1.1.4</td><td>Make webpage public</td></tr>
-            <tr><td>1.4.2</td><td>Task</td><td>Confirm links are working properly</td><td>3</td><td>—</td><td>—</td></tr>
-            <tr><td>1.4.4</td><td>Task</td><td>Make sure navigation is smooth</td><td>5</td><td>1.3.1</td><td>YouTube: how to design GitHub functionality</td></tr>
-            <tr><td>1.3.4</td><td>Task</td><td>Add LinkedIn profile to GitHub</td><td>2</td><td>—</td><td>—</td></tr>
-          </tbody>
-        </table>
+      <div class="toolbar">
+        <h3>Project Charters</h3>
+        <div class="spacer"></div>
       </div>
 
-      <h4><span aria-hidden="true">🧩 </span>Deliverable 2 — Networking Fundamentals Badge (WBS)</h4>
-      <div style="overflow:auto">
-        <table class="table">
-          <thead>
-            <tr><th>WBS ID</th><th>Level</th><th>Task / Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>2</td><td>Deliverable</td><td>Networking Fundamentals Badge</td><td>24</td><td>—</td><td>—</td></tr>
-            <tr><td>2.1</td><td>Work Package</td><td>Join Cisco Networking Academy</td><td>3</td><td>—</td><td>—</td></tr>
-            <tr><td>2.1.1</td><td>Task</td><td>Sign up for Cisco's Networking Academy</td><td>1</td><td>—</td><td>—</td></tr>
-            <tr><td>2.1.2</td><td>Task</td><td>Register for Networking Technician Path</td><td>1</td><td>2.1.1</td><td>—</td></tr>
-            <tr><td>2.1.3</td><td>Task</td><td>Register for Cisco Packet Tracer</td><td>1</td><td>2.1.1</td><td>—</td></tr>
-            <tr><td>2.2</td><td>Work Package</td><td>Networking Technician Path</td><td>9</td><td>—</td><td>—</td></tr>
-            <tr><td>2.2.1</td><td>Task</td><td>Complete the networking tech path</td><td>5</td><td>2.1.1</td><td>Task 2.2.1 (5 days) || Task 2.2.2 (2 days)</td></tr>
-            <tr><td>2.2.2</td><td>Task</td><td>Screenshot and annotate hands-on portion</td><td>2</td><td>2.2.1</td><td>—</td></tr>
-            <tr><td>2.2.3</td><td>Task</td><td>Complete assessment at end of path</td><td>2</td><td>2.2.1</td><td>—</td></tr>
-            <tr><td>2.2.4</td><td>Task</td><td>Get the Networking Technician path badge</td><td>2</td><td>2.1.2</td><td>—</td></tr>
-            <tr><td>2.3</td><td>Work Package</td><td>Cisco Packet Tracer</td><td>12</td><td>—</td><td>—</td></tr>
-            <tr><td>2.3.1</td><td>Task</td><td>Begin Cisco Packet Tracer course</td><td>5</td><td>2.1.1</td><td>Task 2.3.1 (5 days) || Task 2.3.2 (5 days)</td></tr>
-            <tr><td>2.3.2</td><td>Task</td><td>Screenshot builds done using Packet Tracer</td><td>5</td><td>2.3.1</td><td>—</td></tr>
-            <tr><td>2.3.3</td><td>Task</td><td>Complete assessment at end of path</td><td>2</td><td>2.3.2</td><td>—</td></tr>
-            <tr><td>2.3.4</td><td>Task</td><td>Get Cisco Packet Tracer badge</td><td>5</td><td>—</td><td>—</td></tr>
-          </tbody>
-        </table>
+      <div class="tiles" aria-label="Project charter tiles">
+        <a class="tile" href="https://adiaz341.github.io/Project-Charter/" target="_blank" rel="noopener noreferrer">Alejandro Diaz</a>
+        <a class="tile" href="https://ryanhwang2.github.io/Week-7-Homework-2-Charter-Iteration/" target="_blank" rel="noopener noreferrer">Ryan Hwang</a>
+        <a class="tile" href="https://winterguy123.github.io/jyan.github.io/" target="_blank" rel="noopener noreferrer">Jeremy Yan</a>
+        <a class="tile" href="https://juanstudentaccount.github.io/Updated-Project-Charter/" target="_blank" rel="noopener noreferrer">Juan Talome</a>
+        <a class="tile" href="https://alexis-s-pinon.github.io/4860-project-charter/" target="_blank" rel="noopener noreferrer">Alexis Pinon</a>
       </div>
 
-      <h4><span aria-hidden="true">🧩 </span>Deliverable 3 — Cybersecurity Fundamentals Badge (WBS)</h4>
-      <div style="overflow:auto">
-        <table class="table">
-          <thead>
-            <tr><th>WBS ID</th><th>Level</th><th>Task / Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>3</td><td>Deliverable</td><td>Cybersecurity Fundamentals Badge</td><td>28</td><td>—</td><td>—</td></tr>
-            <tr><td>3.1</td><td>Work Package</td><td>Register for Cybersecurity Path on Cisco</td><td>1</td><td>2.1</td><td>—</td></tr>
-            <tr><td>3.1.1</td><td>Task</td><td>Register for Cybersecurity Analyst path</td><td>1</td><td>2.1</td><td>—</td></tr>
-            <tr><td>3.2</td><td>Work Package</td><td>Do hands-on labs on Try Hack Me</td><td>9</td><td>—</td><td>—</td></tr>
-            <tr><td>3.2.1</td><td>Task</td><td>Sign up for Try Hack Me</td><td>1</td><td>—</td><td>—</td></tr>
-            <tr><td>3.2.2</td><td>Task</td><td>Do free rooms to get hands-on experience</td><td>5</td><td>3.2.1</td><td>—</td></tr>
-            <tr><td>3.2.3</td><td>Task</td><td>Use labs completed as hands-on experience</td><td>3</td><td>—</td><td>Task 3.2.2 (5 days) || Task 3.2.3 (3 days)</td></tr>
-            <tr><td>3.2.4</td><td>Task</td><td>Create link for GitHub portfolio</td><td>3</td><td>1.1.1</td><td>—</td></tr>
-            <tr><td>3.3</td><td>Work Package</td><td>Get hands-on with LabEX.io</td><td>8</td><td>—</td><td>—</td></tr>
-            <tr><td>3.3.1</td><td>Task</td><td>Sign up for LabEX.io</td><td>1</td><td>—</td><td>—</td></tr>
-            <tr><td>3.3.2</td><td>Task</td><td>Follow cybersecurity path</td><td>5</td><td>3.3.1</td><td>—</td></tr>
-            <tr><td>3.3.3</td><td>Task</td><td>Use hands-on labs as proof for website</td><td>3</td><td>—</td><td>Task 3.3.2 (5 days) || Task 3.3.3 (3 days)</td></tr>
-            <tr><td>3.3.4</td><td>Task</td><td>Add necessary badges to GitHub</td><td>2</td><td>1.1.1</td><td>—</td></tr>
-            <tr><td>3.4</td><td>Work Package</td><td>Get Cybersecurity Analyst Badge on Cisco</td><td>10</td><td>2.1</td><td>—</td></tr>
-            <tr><td>3.4.1</td><td>Task</td><td>Study for assessment test</td><td>5</td><td>—</td><td>—</td></tr>
-            <tr><td>3.4.2</td><td>Task</td><td>Earn Cybersecurity Analyst path badge</td><td>5</td><td>3.1.1</td><td>—</td></tr>
-          </tbody>
-        </table>
+      <div class="toolbar">
+        <h3>Recent Update</h3>
+        <div class="spacer"></div>
       </div>
 
-      <h4><span aria-hidden="true">🧩 </span>Deliverable 4 — Certifications &amp; Job Application (WBS)</h4>
-      <div style="overflow:auto">
-        <table class="table">
-          <thead>
-            <tr><th>WBS ID</th><th>Level</th><th>Task / Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>4</td><td>Deliverable</td><td>Get certified in ISC2 and Security+ &amp; Apply for a Job</td><td>56</td><td>—</td><td>—</td></tr>
-            <tr><td>4.1</td><td>Work Package</td><td>Attain ISC2 Cybersecurity certification</td><td>10</td><td>—</td><td>—</td></tr>
-            <tr><td>4.1.1</td><td>Task</td><td>Sign up for free ISC2 class and exam</td><td>1</td><td>—</td><td>—</td></tr>
-            <tr><td>4.1.2</td><td>Task</td><td>Complete free Cybersecurity course</td><td>5</td><td>4.1.1</td><td>Task 4.1.2 (5 days) || Task 4.1.3 (5 days)</td></tr>
-            <tr><td>4.1.3</td><td>Task</td><td>Study for ISC2 exam</td><td>5</td><td>4.1.1</td><td>—</td></tr>
-            <tr><td>4.1.4</td><td>Task</td><td>Schedule exam appointment for ISC2 CC</td><td>5</td><td>—</td><td>—</td></tr>
-            <tr><td>4.2</td><td>Work Package</td><td>Get Security+ certification</td><td>6</td><td>—</td><td>—</td></tr>
-            <tr><td>4.2.1</td><td>Task</td><td>Complete Cengage study book for Security+</td><td>5</td><td>—</td><td>Task 4.2.1 (5 days) || Task 4.2.2 (5 days) || Task 4.2.3 (5 days)</td></tr>
-            <tr><td>4.2.2</td><td>Task</td><td>Use hands-on labs from LabEX.io for practice</td><td>5</td><td>4.2.1</td><td>—</td></tr>
-            <tr><td>4.2.3</td><td>Task</td><td>Study and save money for the exam</td><td>5</td><td>4.2.1</td><td>—</td></tr>
-            <tr><td>4.2.4</td><td>Task</td><td>Schedule exam appointment for Security+ certification</td><td>1</td><td>4.2.3</td><td>—</td></tr>
-            <tr><td>4.3</td><td>Work Package</td><td>Display certificates on GitHub</td><td>6</td><td>—</td><td>—</td></tr>
-            <tr><td>4.3.1</td><td>Task</td><td>Copy link to Security+ certification</td><td>1</td><td>4.2.4</td><td>—</td></tr>
-            <tr><td>4.3.2</td><td>Task</td><td>Make a banner URL to see cert.</td><td>1</td><td>4.2.4</td><td>—</td></tr>
-            <tr><td>4.3.3</td><td>Task</td><td>Copy link to ISC2 CC cert</td><td>1</td><td>4.1.4</td><td>—</td></tr>
-            <tr><td>4.3.4</td><td>Task</td><td>Make a banner URL to see cert.</td><td>1</td><td>4.1.4</td><td>—</td></tr>
-            <tr><td>4.3.5</td><td>Task</td><td>Upload to GitHub portfolio</td><td>2</td><td>1.1.1</td><td>—</td></tr>
-            <tr><td>4.4</td><td>Work Package</td><td>Apply for a job in IT</td><td>34</td><td>—</td><td>—</td></tr>
-            <tr><td>4.4.1</td><td>Task</td><td>Inspect GitHub portfolio</td><td>10</td><td>—</td><td>—</td></tr>
-            <tr><td>4.4.1.1</td><td>Task</td><td>Make sure every link works</td><td>1</td><td>1.1.1</td><td>—</td></tr>
-            <tr><td>4.4.1.2</td><td>Task</td><td>Make sure anyone can access GitHub page</td><td>1</td><td>1.1.4</td><td>—</td></tr>
-            <tr><td>4.4.1.3</td><td>Task</td><td>Beautify where needed</td><td>3</td><td>—</td><td>—</td></tr>
-            <tr><td>4.4.1.4</td><td>Task</td><td>Possibly turn portfolio into webpage</td><td>5</td><td>—</td><td>—</td></tr>
-            <tr><td>4.4.2</td><td>Work Package</td><td>Update resume</td><td>4</td><td>—</td><td>—</td></tr>
-            <tr><td>4.4.2.1</td><td>Task</td><td>Add new achievements and experience</td><td>1</td><td>Del. 2, 3, 4 — Networking, cybersecurity, and certs in ISC2 Security+</td><td>—</td></tr>
-            <tr><td>4.4.2.2</td><td>Task</td><td>Place resume on GitHub</td><td>1</td><td>1.1.1</td><td>—</td></tr>
-            <tr><td>4.4.2.3</td><td>Task</td><td>Place resume on LinkedIn</td><td>1</td><td>1.1.1</td><td>—</td></tr>
-            <tr><td>4.4.2.4</td><td>Task</td><td>Go to career center for help with resume</td><td>1</td><td>—</td><td>—</td></tr>
-            <tr><td>4.4.3</td><td>Work Package</td><td>Send applications for employment</td><td>15</td><td>—</td><td>—</td></tr>
-            <tr><td>4.4.3.1</td><td>Task</td><td>Look up entry-level IT jobs on LinkedIn</td><td>3</td><td>—</td><td>—</td></tr>
-            <tr><td>4.4.3.2</td><td>Task</td><td>Search the web for IT job openings</td><td>2</td><td>—</td><td>—</td></tr>
-            <tr><td>4.4.3.3</td><td>Task</td><td>Talk to network about job openings in their work</td><td>2</td><td>—</td><td>—</td></tr>
-            <tr><td>4.4.3.4</td><td>Task</td><td>Practice for interviews</td><td>5</td><td>4.4.3.5</td><td>—</td></tr>
-            <tr><td>4.4.3.5</td><td>Task</td><td>Secure at least 2 interviews</td><td>3</td><td>—</td><td>—</td></tr>
-            <tr><td>4.4.4</td><td>Work Package</td><td>Get hired</td><td>5</td><td>—</td><td>—</td></tr>
-            <tr><td>4.4.4.1</td><td>Task</td><td>GET A JOB!!!</td><td>5</td><td>—</td><td>—</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="strap"></div>
+      <!-- Static sample update -->
+      <details class="update" open>
+        <summary>
+          <div class="summary-row">
+            <strong>Update – 2025-10-26</strong>
+            <span class="spacer"></span>
+            <div class="summary-meta">
+              <span>PMO</span>
+              <span>Green</span>
+            </div>
+          </div>
+        </summary>
+        <div class="update-body">
+          <div class="row">
+            <div>
+              <p><strong>Summary:</strong> The team completed the suggested restructure of our goal. Milestones are in progress and expected to complete shortly. Monitoring and pre-planning next milestones has begun to keep the timeline on track.</p>
+              <p><strong>Highlights:</strong> Finalized goal and milestones.</p>
+            </div>
+            <div>
+              <p><strong>Challenges / Risks:</strong> External factors affecting timeline; feedback cycles and outside commitments may cause delays.</p>
+              <p><strong>Next Week Focus:</strong> Progress the next deliverable to completion.</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+    </section>
   </div>
-</details>
-
-<!-- 7. Budget (estimated) -->
-<details id="sec7" class="section">
-  <summary class="section-head">
-    <span class="icon" aria-hidden="true">💸</span>
-    <span>Budget (estimated)</span>
-  </summary>
-  <div class="collapsible">
-    <div class="section-body">
-      <div style="overflow:auto">
-        <table class="table" aria-label="Budget">
-          <thead>
-            <tr><th>Category</th><th>Item / Description</th><th>Qty</th><th>Unit Cost ($)</th><th>Subtotal ($)</th><th>Notes</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Labor</td><td>Developer</td><td>30</td><td>100.00</td><td>3,000.00</td><td>Develop GitHub page</td></tr>
-            <tr><td>Labor</td><td>Designer</td><td>0</td><td>85.00</td><td>0.00</td><td></td></tr>
-            <tr><td>Labor</td><td>Project Manager</td><td>5</td><td>120.00</td><td>600.00</td><td>I will be project manager</td></tr>
-            <tr><td>Labor</td><td>Tester</td><td>3</td><td>75.00</td><td>225.00</td><td>Get peers to review my GitHub</td></tr>
-            <tr><td>Labor</td><td>Business Analyst</td><td>0</td><td>95.00</td><td>0.00</td><td></td></tr>
-            <tr><td>Labor</td><td>Other Role</td><td>0</td><td>0.00</td><td>0.00</td><td></td></tr>
-            <tr><td colspan="4" style="text-align:right"><strong>LABOR SUBTOTAL</strong></td><td><strong>3,825.00</strong></td><td>total cost of labor</td></tr>
-            <tr><td>Equipment/Software</td><td>Software Licenses</td><td>1</td><td>229.99</td><td>229.99</td><td>Cengage Unlimited: Subscription for Students – Cengage</td></tr>
-            <tr><td>Equipment/Software</td><td>Development Tools</td><td>0</td><td>0.00</td><td>0.00</td><td></td></tr>
-            <tr><td>Equipment/Software</td><td>Testing Environment</td><td>0</td><td>0.00</td><td>0.00</td><td>Servers or cloud instances</td></tr>
-            <tr><td>Equipment/Software</td><td>Database Software</td><td>0</td><td>0.00</td><td>0.00</td><td>If needed for project</td></tr>
-            <tr><td>Equipment/Software</td><td>Other Equipment</td><td>2</td><td>44.99</td><td>89.98</td><td>Buying additional RAM for laptop — NVTEK 16GB (2X8GB) DDR4 3200MHZ PC4-25600 SODIMM 2Rx8 1.2V CL22 260-PIN Non-ECC Laptop PC Computer Memory KIT at Amazon.com</td></tr>
-            <tr><td colspan="4" style="text-align:right"><strong>EQUIPMENT/SOFTWARE SUBTOTAL</strong></td><td><strong>319.97</strong></td><td></td></tr>
-            <tr><td>Materials</td><td>Stock Images/Media</td><td>0</td><td>0.00</td><td>0.00</td><td>Graphics and multimedia</td></tr>
-            <tr><td>Materials</td><td>Training Materials</td><td>1</td><td>229.99</td><td>229.99</td><td>Cengage</td></tr>
-            <tr><td>Materials</td><td>Documentation Assets</td><td>1</td><td>25.00</td><td>25.00</td><td>For borrowed templates on GitHub</td></tr>
-            <tr><td>Materials</td><td>Other Materials</td><td>2</td><td>50.00</td><td>100.00</td><td>live study groups and seminars</td></tr>
-            <tr><td>Materials</td><td>Other Materials</td><td>2</td><td>50.00</td><td>100.00</td><td>Price of certification exams</td></tr>
-            <tr><td colspan="4" style="text-align:right"><strong>MATERIALS SUBTOTAL</strong></td><td><strong>454.99</strong></td><td></td></tr>
-            <tr><td>Services</td><td>Cloud Hosting</td><td>1</td><td>0.10</td><td>0.10</td><td>AWS and Azure for AI learning</td></tr>
-            <tr><td>Services</td><td>Third-party APIs</td><td>0</td><td>0.00</td><td>0.00</td><td>Payment processing etc.</td></tr>
-            <tr><td>Services</td><td>Consulting Services</td><td>5</td><td>25.00</td><td>125.00</td><td>External expertise</td></tr>
-            <tr><td>Services</td><td>Security Audit</td><td>0</td><td>0.00</td><td>0.00</td><td>Security assessments</td></tr>
-            <tr><td>Services</td><td>Other Services</td><td>2</td><td>20.00</td><td>40.00</td><td>Consulting on Portfolio</td></tr>
-            <tr><td colspan="4" style="text-align:right"><strong>SERVICES SUBTOTAL</strong></td><td><strong>165.10</strong></td><td></td></tr>
-            <tr><td colspan="4" style="text-align:right"><strong>SUBTOTAL DIRECT COSTS — Sum of all categories</strong></td><td><strong>4,765.06</strong></td><td></td></tr>
-            <tr><td colspan="4" style="text-align:right"><strong>Contingency Reserve (%)</strong></td><td><strong>953.01</strong></td><td>20% — Adjust percentage as needed</td></tr>
-            <tr><td colspan="4" style="text-align:right"><strong>TOTAL PROJECT BUDGET</strong></td><td><strong>5,718.07</strong></td><td>Final budget amount</td></tr>
-          </tbody>
-          <tfoot>
-            <tr><td colspan="6">
-              <div class="kpi">
-                <div class="pill">Labor — 66.89%</div>
-                <div class="pill">Equipment/Software — 5.60%</div>
-                <div class="pill">Materials — 7.96%</div>
-                <div class="pill">Services — 2.89%</div>
-                <div class="pill">Contingency — 16.67%</div>
-              </div>
-              <small>Percentages rounded to two decimals; totals may differ by ±0.01% due to rounding.</small>
-            </td></tr>
-          </tfoot>
-        </table>
-      </div>
-    </div>
-    <div class="strap"></div>
-  </div>
-</details>
-
-<!-- 8. Project Methodology — Explanation -->
-<details id="sec8" class="section">
-  <summary class="section-head">
-    <span class="icon" aria-hidden="true">⚙️</span>
-    <span>Project Methodology — Explanation</span>
-  </summary>
-  <div class="collapsible">
-    <div class="section-body">
-      <p>Predictive will be the methodology I choose to complete my project.</p>
-      <ul>
-        <li>All requirements were gathered at the beginning of the planning phase. While one more option was added, nothing will be deleted or forgotten.</li>
-        <li>I will be able to establish a timeline for when I should complete certain deliverables, but feedback won’t be truly needed until the very end (of the semester).</li>
-        <li>There is no need for iterations or constant changes to the goals I have already established.</li>
-        <li>The main goal of the project is to get a job; the last deliverable will be a completed portfolio to showcase to employers and an updated resume.</li>
-      </ul>
-    </div>
-    <div class="strap"></div>
-  </div>
-</details>
-
-<!-- 9. Project Methodology Diagram -->
-<details id="sec9" class="section">
-  <summary class="section-head">
-    <span class="icon" aria-hidden="true">🗺️</span>
-    <span>Project Methodology Diagram</span>
-  </summary>
-  <div class="collapsible">
-    <div class="section-body">
-      <p><em>Figure: Project methodology diagram (Predictive).</em></p>
-      <p><a href="#" aria-disabled="true">Image placeholder</a></p>
-    </div>
-    <div class="strap"></div>
-  </div>
-</details>
-
-<!-- 10. Project Tool Selection -->
-<details id="sec10" class="section">
-  <summary class="section-head">
-    <span class="icon" aria-hidden="true">🧰</span>
-    <span>Project Tool Selection</span>
-  </summary>
-  <div class="collapsible">
-    <div class="section-body">
-      <h4><span aria-hidden="true">⭐ </span>Primary Tool &amp; Rationale</h4>
-      <p>The three project management tools I chose to explore are Smartsheet, Asana, and Monday.com; the one I really enjoyed using—and will continue to use—is Monday.com. That was, coincidentally, a management tool a lot of the interviewees I spoke to talked about using. I can see why Monday would be a good project management tool to use, not just for predictive, but also for hybrid and agile.</p>
-      <p>I look forward to getting as familiar as possible with this project. This one was more intuitive to use and had an easy upload option for files I already have saved to my computer. It is free to use, beginner-friendly, and very intuitive in adding new views and dashboards to configure it to your liking. The one that sold me was the mobile option that Asana and Smartsheet didn’t allow, not to mention Smartsheet only allowed me to use whatever the “organization” had previously created.</p>
-      <p>This was one of the key reasons why I also stayed away from Smartsheet, and Asana was a little too plain for my liking.</p>
-    </div>
-    <div class="strap"></div>
-  </div>
-</details>
-
-<!-- 11. Screenshots — Project Tool in Use -->
-<details id="sec11" class="section">
-  <summary class="section-head">
-    <span class="icon" aria-hidden="true">🖼️</span>
-    <span>Screenshots — Project Tool in Use</span>
-  </summary>
-  <div class="collapsible">
-    <div class="section-body">
-      <p>
-        <span class="pill">Main table — WBS columns and statuses.</span>
-        <span class="pill">Gantt — schedule by week.</span>
-        <span class="pill">Dashboard — progress by phase.</span>
-        <span class="pill">List view — all items.</span>
-      </p>
-    </div>
-    <div class="strap"></div>
-  </div>
-</details>
-
-<!-- Additional Components -->
-<details id="additional" class="section">
-  <summary class="section-head">
-    <span class="icon" aria-hidden="true">➕</span>
-    <span>Additional Components</span>
-  </summary>
-  <div class="collapsible">
-    <div class="section-body">
-      <p><strong>Note for Future Updates</strong> — This charter will be expanded throughout the semester as we cover additional project management components including:</p>
-      <ul>
-        <li>High-Level Timeline &amp; Milestones</li>
-        <li>Execution Plan Overview</li>
-        <li>Risk Register</li>
-        <li>Acceptance Criteria</li>
-        <li>Project Manager Authority &amp; Approvals</li>
-      </ul>
-      <p>Keep this file — you'll be adding to it as the semester progresses!</p>
-    </div>
-    <div class="strap"></div>
-  </div>
-</details>
-
-
-    </main>
-  </div>
-
-  <footer>
-    <small>Source content preserved from the original charter page. Visual design by you (light blue &amp; green accents), with collapsible sections and sticky navigation for easy scanning.</small>
-  </footer>
-
-  <script>
-    // Improve details UX: toggle arrow and remember open state per section
-    document.querySelectorAll('details.section').forEach((d,i)=>{
-      const key = 'pc-open-'+i;
-      // Restore state
-      if(localStorage.getItem(key)==='1') d.setAttribute('open','open');
-      d.addEventListener('toggle',()=>{
-        try{localStorage.setItem(key, d.open ? '1' : '0');}catch(e){}
-      });
-      // Add a chevron visually using CSS paint (fallback: text)
-      const sum = d.querySelector('summary.section-head');
-      if(sum){
-        const chevron = document.createElement('span');
-        chevron.setAttribute('aria-hidden','true');
-        chevron.style.marginLeft='auto';
-        chevron.textContent = '▾';
-        d.addEventListener('toggle',()=>{
-          chevron.style.transform = d.open ? 'rotate(0deg)' : 'rotate(-90deg)';
-          chevron.style.transition='transform .2s ease';
-        });
-        sum.appendChild(chevron);
-      }
-    });
-  </script>
-<script>
-  // ---------- Animated <details> ---------- //
-  // We animate the height of the .collapsible wrapper for smoother open/close
-  document.querySelectorAll('details.section').forEach((d, idx) => {
-    const body = d.querySelector('.collapsible');
-    if(!body) return;
-
-    // Set initial height for open sections
-    const setAutoHeight = () => {
-      body.style.height = 'auto';
-      const h = body.getBoundingClientRect().height;
-      body.style.height = h + 'px';
-      // force reflow then remove inline height for natural size
-      requestAnimationFrame(() => { body.style.height = 'auto'; });
-    };
-
-    // Start closed sections at height:0 (if not open)
-    if (!d.open) {
-      body.style.height = '0px';
-    } else {
-      setAutoHeight();
-    }
-
-    // Toggle animation
-    d.addEventListener('toggle', (e) => {
-      const isOpening = d.open;
-      const startHeight = body.getBoundingClientRect().height;
-
-      // Prepare end height
-      body.style.height = 'auto';
-      const endHeight = body.getBoundingClientRect().height;
-      // Revert to start before triggering transition
-      body.style.height = startHeight + 'px';
-      // Next frame, go to target height
-      requestAnimationFrame(() => {
-        body.style.height = (isOpening ? endHeight : 0) + 'px';
-      });
-
-      // After transition, cleanup
-      const onEnd = (ev) => {
-        if (ev.target !== body) return;
-        body.style.height = isOpening ? 'auto' : '0px';
-        body.removeEventListener('transitionend', onEnd);
-      };
-      body.addEventListener('transitionend', onEnd);
-
-      // Optional: remember state
-      try { localStorage.setItem('pc-open-' + idx, isOpening ? '1' : '0'); } catch(e){}
-    });
-
-    // Restore state from localStorage (if present)
-    try {
-      const saved = localStorage.getItem('pc-open-' + idx);
-      if (saved === '0' && d.open) {
-        d.open = false; body.style.height = '0px';
-      }
-      if (saved === '1' && !d.open) {
-        d.open = true; setAutoHeight();
-      }
-    } catch(e){}
-  });
-
-  // ---------- Sticky Back-to-Top ---------- //
-  const backBtn = document.getElementById('backToTop');
-  const showAt = 240; // px of scroll before showing
-  const onScroll = () => {
-    if (window.scrollY > showAt) {
-      backBtn.style.display = 'inline-block';
-    } else {
-      backBtn.style.display = 'none';
-    }
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  backBtn.addEventListener('click', (e) => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-  onScroll();
-</script>
-   <button id="backToTop" aria-label="Back to Top">↑ Top</button>
- <script>
-  /* ===== Open / Close all ===== */
-  (function(){
-    const sections = Array.from(document.querySelectorAll('details.section'));
-    const openBtn = document.getElementById('openAll');
-    const closeBtn = document.getElementById('closeAll');
-
-    if(openBtn) openBtn.addEventListener('click', () => {
-      sections.forEach(d => { if (!d.open) d.open = true; });
-    });
-    if(closeBtn) closeBtn.addEventListener('click', () => {
-      sections.forEach(d => { if (d.open) d.open = false; });
-    });
-  })();
-
-  /* ===== Active section highlighting in TOC ===== */
-  (function(){
-    const sections = Array.from(document.querySelectorAll('details.section[id]'));
-    const tocLinks = Array.from(document.querySelectorAll('nav.toc a'));
-    const map = new Map(
-      tocLinks.map(a => [a.getAttribute('href').slice(1), a])
-    );
-
-    if (!('IntersectionObserver' in window) || sections.length === 0) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      // Pick the most centered/visible section
-      let best = null;
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          if (!best || entry.intersectionRatio > best.intersectionRatio) best = entry;
-        }
-      });
-      if (best) {
-        const id = best.target.id;
-        tocLinks.forEach(a => a.classList.remove('active'));
-        const link = map.get(id);
-        if (link) link.classList.add('active');
-      }
-    }, {
-      root: null,
-      // This rootMargin centers the “active” window between 40% and 55% viewport
-      rootMargin: '-40% 0px -55% 0px',
-      threshold: [0.05, 0.25, 0.5, 0.75, 1]
-    });
-
-    sections.forEach(sec => observer.observe(sec));
-  })();
-
-  /* ===== A11y: keep aria-expanded in sync with <details> state ===== */
-  (function(){
-    const detailSections = Array.from(document.querySelectorAll('details.section'));
-    detailSections.forEach(d => {
-      const summary = d.querySelector('summary');
-      if (!summary) return;
-
-      // Initialize
-      summary.setAttribute('aria-expanded', d.open ? 'true' : 'false');
-
-      // Update on toggle
-      d.addEventListener('toggle', () => {
-        summary.setAttribute('aria-expanded', d.open ? 'true' : 'false');
-      });
-    });
-  })();
-</script>
-
-<!-- Back to Top button (hidden until you scroll) -->
-<button id="backToTop" type="button" aria-label="Back to top" hidden>
-  <span class="chev">↑</span><span>Top</span>
-</button>
-
-<script>
-  (function(){
-    // Ensure there is an element with id="top" to scroll to (you already have one on your wrapper; if not, add <div id="top"></div> near the top)
-    const btn = document.getElementById('backToTop');
-    if(!btn) return;
-
-    const SHOW_AT = 240; // px scrolled before showing button
-
-    const onScroll = () => {
-      btn.hidden = window.scrollY <= SHOW_AT;
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); // initialize on load
-
-    btn.addEventListener('click', () => {
-      // Smooth if supported; otherwise fall back
-      if ('scrollBehavior' in document.documentElement.style) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        location.hash = 'top';
-      }
-    });
-  })();
-</script>
-
- </body>
+</body>
 </html>
